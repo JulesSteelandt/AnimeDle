@@ -1,4 +1,4 @@
-import ButtonGamemode from '../components/Button/ButtonGamemode.tsx';
+import ButtonGamemode from '../components/Button/ButtonGamemode.vue';
 
 export default function Gamemode() {
   return (
