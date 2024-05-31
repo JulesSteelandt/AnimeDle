@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[90vh] bg-main">
+  <div class="h-[93vh] bg-main">
     <section class="flex h-full">
       <div class="h-2/4 w-2/4">
         <img :src="imgAccueil" alt="image de pleins d'anime" class="rounded-r-[1300px] bg-mainText" />

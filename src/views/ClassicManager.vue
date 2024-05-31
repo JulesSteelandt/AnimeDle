@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[90vh] bg-main">
+  <div class="h-[93vh] bg-main">
     <div class="p-3">
       <ScoreMode text="Streak" :score="streak" />
       <ScoreMode text="Max Streak" :score="maxStreak" />

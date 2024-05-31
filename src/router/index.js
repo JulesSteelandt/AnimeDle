@@ -10,11 +10,13 @@ const router = createRouter({
       {
         path: '/',
         name: 'home',
+        meta: {title: 'Home'},
         component: MainView,
       },
       {
         path: '/rules',
         name: 'rules',
+        meta: {title: 'Rules'},
         component: Rules,
       },
       {

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[90vh] bg-main">
+  <div class="h-[93vh] bg-main">
     <div class="flex h-[80vh] flex-col items-center justify-center">
 
       <ButtonGamemode text="Classic" link="/play/classic" @link-click="chooseGamemode" />
