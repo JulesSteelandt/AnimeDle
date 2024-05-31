@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ButtonGame from '../Button/ButtonGamemode.vue';
+import ButtonGame from '../Button/ButtonGame.vue';
 
 export default {
   components: {
