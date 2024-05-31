@@ -3,11 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: Itim;
-  src: url("./fonts/Itim-Regular.ttf");
+    font-family: Itim;
+    src: url("./fonts/Itim-Regular.ttf");
 }
 
 @font-face {
-  font-family: Lemon;
-  src: url("./fonts/Lemon-Regular.ttf");
+    font-family: Lemon;
+    src: url("./fonts/Lemon-Regular.ttf");
+}
+
+
+html {
+    overflow: hidden !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }

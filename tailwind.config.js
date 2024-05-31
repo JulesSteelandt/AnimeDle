@@ -15,6 +15,9 @@ export default {
         Lemon: ['Lemon', 'Regular'],
         Itim: ['Itim', 'Regular'],
       },
-    }, 
+    },
   },
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 };
