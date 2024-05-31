@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
+    "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuetify": "^3.6.8"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
