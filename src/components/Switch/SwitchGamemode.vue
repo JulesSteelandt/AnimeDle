@@ -1,13 +1,17 @@
 <template>
   <div class="flex items-center">
-    <input
-      type="checkbox"
-      class="form-checkbox h-6 w-6 text-primary border-primary focus:ring-primary"
-      :checked="anime"
-      @change="handleToggle"
-    />
+    <div>
+      <label
+        class="relative inline-flex items-center cursor-pointer"
+      >
+        <input type="checkbox" v-model="switchAnime" class="sr-only peer" @change="$emit('change:type',anime)" />
+        <div
+          class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"
+        />
+      </label>
+    </div>
     <div class="ml-2">
-      <span class="font-Lemon text-4xl text-secondaryText">{{ anime ? 'Manga' : 'Anime' }}</span>
+      <span class="font-Lemon text-4xl text-secondaryText">{{ switchAnime ? 'Manga' : 'Anime' }}</span>
     </div>
   </div>
 </template>
@@ -16,12 +20,12 @@
 export default {
   props: {
     anime: Boolean,
-    setAnime: Function,
   },
-  methods: {
-    handleToggle() {
-      this.setAnime(!this.anime);
-    },
+
+  data() {
+    return {
+      switchAnime: this.anime,
+    };
   },
 };
 </script>

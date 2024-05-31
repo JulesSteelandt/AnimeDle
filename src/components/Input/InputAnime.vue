@@ -15,23 +15,17 @@ import ButtonGame from '../Button/ButtonGamemode.vue';
 
 export default {
   components: {
-    ButtonGame
+    ButtonGame,
   },
   data() {
     return {
-      inputValue: ''
+      inputValue: '',
     };
   },
   methods: {
     validateInput() {
-      // Ajoutez votre logique de validation ici
       console.log('Valeur entrée :', this.inputValue);
-    }
-  }
+    },
+  },
 };
 </script>
-
-<style scoped>
-/* Styles spécifiques au composant */
-/* Vous pouvez définir vos styles CSS ici si nécessaire */
-</style>

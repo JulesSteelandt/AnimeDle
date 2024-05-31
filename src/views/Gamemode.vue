@@ -2,9 +2,9 @@
   <div class="h-[90vh] bg-main">
     <div class="flex h-[80vh] flex-col items-center justify-center">
 
-      <ButtonGamemode text="Classic" @click="chooseGamemode('/play/classic')" />
+      <ButtonGamemode text="Classic" link="/play/classic" @link-click="chooseGamemode" />
 
-      <ButtonGamemode text="Guess" @click="chooseGamemode('/play/guess')" />
+      <ButtonGamemode text="Guess" link="/play/guess" @link-click="chooseGamemode" />
 
     </div>
   </div>

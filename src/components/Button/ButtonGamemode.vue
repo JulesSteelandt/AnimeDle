@@ -1,13 +1,13 @@
 <template>
   <div class="my-7 flex space-x-5">
-    <router-link
-      class="bg-button shadow-button_sh flex h-16 w-64 items-center justify-center rounded-2xl text-5xl shadow-[0_0_25px_6px]"
-      :to="link"
+    <button
+      class="bg-button shadow-button_sh flex h-16 w-64 items-center justify-center rounded-2xl text-5xl shadow-[0_0_25px_6px] font-Lemon text-secondary"
+      @click="$emit('link-click',link)"
     >
-      <button class="font-Lemon text-secondary">{{ text }}</button>
-    </router-link>
+      {{ text }}
+    </button>
 
-    <SwitchGamemode v-model="anime" />
+    <SwitchGamemode v-model="anime" @change:type="" />
   </div>
 </template>
 

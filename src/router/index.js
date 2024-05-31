@@ -28,13 +28,6 @@ const router = createRouter({
         meta: {title: 'Classic'},
         component: ClassicManager,
       },
-      {
-        path: '/about',
-        name: 'about',
-        component: () => {
-          return import('../views/AboutView.vue');
-        },
-      },
     ],
   })
 ;

@@ -1,5 +1,5 @@
 <template>
-  <p className="font-Itim text-3xl text-mainText">{{ text }} : {{ score }}</p>
+  <p class="font-Itim text-3xl text-mainText">{{ text }} : {{ score }}</p>
 </template>
 
 <script>
