@@ -1,5 +1,5 @@
 <template>
-  <button class="font-Itim text-2xl text-secondary bg-button px-2 rounded-[22px] shadow-dropCustom">
+  <button class="font-Itim text-2xl text-secondary bg-button px-2 rounded-[22px] shadow-dropCustom mt-2">
     {{ text }}
   </button>
 </template>

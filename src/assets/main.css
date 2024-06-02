@@ -18,10 +18,9 @@ html {
 }
 
 /* Ajouter un défilement uniquement sur les petits écrans */
-/*@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     html {
         overflow-y: auto !important;
         overflow-x: hidden !important;
     }
 }
-*/

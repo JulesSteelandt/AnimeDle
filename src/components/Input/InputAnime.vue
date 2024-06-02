@@ -1,12 +1,12 @@
 <template>
-  <v-row class="space-x-5 my-2">
+  <v-row class="space-x-5 my-2 justify-center">
     <input
-      class="rounded-[20px] w-[45vh] font-Lemon text-inputText h-8 shadow-inner shadow-shadowInner px-2 bg-white"
+      class="rounded-[20px] w-[45vh] font-Lemon text-inputText h-8 shadow-inner shadow-shadowInner px-2 bg-white mt-2"
       type="text"
       v-model="inputValue"
       placeholder="entrer le nom ici"
     />
-    <ButtonGame text="valider" @click="validateInput" />
+    <ButtonGame text="valider" @click="validateInput"/>
   </v-row>
 </template>
 

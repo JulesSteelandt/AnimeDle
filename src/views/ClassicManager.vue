@@ -1,11 +1,11 @@
 <template>
-  <div class="h-[93vh] bg-main">
+  <div class="h-[93vh] bg-main flex flex-col items-center">
     <div class="p-3">
       <ScoreMode text="Streak" :score="streak" />
       <ScoreMode text="Max Streak" :score="maxStreak" />
     </div>
-    <div class="flex flex-col items-center">
-      <div class="flex pb-3">
+    <div class="items-center">
+      <div class="flex lg:flex-row flex-col lg:items-end items-center pb-3">
         <ImageClassic />
         <LiveCount :life="life" />
       </div>
