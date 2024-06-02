@@ -1,6 +1,6 @@
 <template>
-  <div class='flex h-[93vh] items-center justify-center bg-main text-white my-3'>
-    <div class='max-w-2xl rounded-lg bg-secondary p-8 shadow-md ma-5 max-h-full overflow-auto'>
+  <div class='flex h-[93vh] items-center justify-center bg-main text-white '>
+    <v-container class='max-w-2xl rounded-lg p-8 shadow-md ma-5 max-h-full overflow-auto bg-second'>
       <h2 class='mb-4 font-Lemon text-3xl'>Comment jouer :</h2>
 
       <v-col class='mb-8'>
@@ -19,6 +19,6 @@
           l'aide de son studio, ses dates... Si vous perdez toutes vos vies, vous perdez la partie.
         </p>
       </v-col>
-    </div>
+    </v-container>
   </div>
 </template>;

@@ -5,8 +5,8 @@
       <ScoreMode text="Max Streak" :score="maxStreak" />
     </div>
     <div class="items-center">
-      <div class="flex lg:flex-row flex-col lg:items-end items-center pb-3">
-        <ImageClassic :img="animeImage" />
+      <div class="flex lg:flex-row flex-col lg:items-end items-center pb-3 justify-center">
+        <ImageClassic :img="animeImage" :itteration="try_remaining" />
         <LiveCount :life="life" />
       </div>
       <div v-if="finish" class="text-center font-Itim text-white text-3xl">
@@ -40,6 +40,7 @@ export default {
       maxStreak: 0,
       streak: 0,
       life: 3,
+      try_remaining: 3,
       animeImage: imageTest,
       animeId: null,
       win: false,

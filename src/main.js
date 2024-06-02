@@ -15,9 +15,7 @@ app.use(router);
 
 
 // Configuration de Vuetify
-const vuetify = createVuetify({
-  theme: false,
-});
+const vuetify = createVuetify();
 
 // Utilisation de Vuetify
 app.use(vuetify).mount('#app');

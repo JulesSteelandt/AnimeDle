@@ -11,7 +11,7 @@ export default {
     extend: {
       colors: {
         main: COLORS.MAIN,
-        secondary: COLORS.SECONDARY,
+        second: COLORS.SECONDARY,
         mainText: COLORS.MAIN_TEXT,
         secondaryText: COLORS.SECONDARY_TEXT,
         button: COLORS.BUTTON,

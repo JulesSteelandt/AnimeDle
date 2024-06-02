@@ -1,10 +1,13 @@
 <template>
   <v-row class="space-x-5 my-2 justify-center">
-    <input
-      class="rounded-[20px] w-[45vh] font-Lemon text-inputText h-8 shadow-inner shadow-shadowInner px-2 bg-white mt-2"
-      type="text"
-      v-model="inputValue"
-      placeholder="entrer le nom ici"
+
+    <v-autocomplete
+        class="font-Itim text-inputText h-6 mt-2 text-3xl text-white w-[30vw]"
+        v-model="inputValue"
+        bg-color="white"
+        rounded
+        :items="suggestions"
+        placeholder="Nom de l'anime"
     />
     <ButtonGame text="valider" @click="validateInput"/>
   </v-row>
@@ -20,6 +23,7 @@ export default {
   data() {
     return {
       inputValue: '',
+      suggestions: ['Naruto', 'One Piece', 'Bleach', 'Dragon Ball', 'Death Note', 'My Hero Academia', 'Black Clover', 'Demon Slayer', 'Attack on Titan', 'Tokyo Revengers', 'Jujutsu Kaisen'],
     };
   },
   methods: {
@@ -29,3 +33,8 @@ export default {
   },
 };
 </script>
+
+<style>
+
+</style>
+

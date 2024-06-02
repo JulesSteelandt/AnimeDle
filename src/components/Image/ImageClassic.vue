@@ -1,7 +1,9 @@
 <template>
-  <div class="space-x-5">
-    <img :src="testImage" alt="LIW" width="343" height="480" />
-  </div>
+    <img :src="img"
+         alt="guess_image"
+         class="h-96 w-96"
+         :style="{ filter: `blur(${blur})` }"
+    />
 </template>
 
 <script>
@@ -13,11 +15,30 @@ export default {
       type: String,
       required: true,
     },
+    itteration: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
       testImage: testImage,
     };
   },
+  computed: {
+    blur() {
+      switch (this.itteration) {
+        case 3:
+          return '20px';
+        case 2:
+          return '10px';
+        case 1:
+          return '5px';
+        default:
+          return '0px';
+      }
+    },
+  },
 };
 </script>
+
