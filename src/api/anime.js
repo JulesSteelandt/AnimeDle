@@ -11,7 +11,7 @@ export default {
     },
 
     getAnimeBySearch: (search) => {
-        return api.get(`/anime/search?search=${search}`);
+        return api.get(`/anime/search?q=${search}`);
     },
 
 };
