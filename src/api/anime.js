@@ -7,7 +7,11 @@ export default {
     },
 
     getAnimeById: (id) => {
-        return api.get(`/animes/${id});`);
+        return api.get(`/anime/${id});`);
+    },
+
+    getAnimeBySearch: (search) => {
+        return api.get(`/anime/search?search=${search}`);
     },
 
 };

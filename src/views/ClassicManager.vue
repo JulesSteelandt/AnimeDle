@@ -53,6 +53,8 @@ export default {
     console.log(res);
     this.animeImage = res.data.anime.main_picture.medium;
     this.animeId = res.data.anime.id; */
+    const res = await AnimeApi.getAnimeBySearch('love');
+    console.log(res);
   },
 };
 </script>
