@@ -6,7 +6,7 @@
     </div>
     <div class="items-center">
       <div class="flex lg:flex-row flex-col lg:items-end items-center pb-3">
-        <ImageClassic />
+        <ImageClassic :img="animeImage" />
         <LiveCount :life="life" />
       </div>
       <div v-if="finish" class="text-center font-Itim text-white text-3xl">
@@ -29,6 +29,8 @@ import LiveCount from '@/components/Score/LiveCount.vue';
 import ImageClassic from '@/components/Image/ImageClassic.vue';
 import ScoreMode from '@/components/Score/ScoreMode.vue';
 import ButtonGamemode from '@/components/Button/ButtonGamemode.vue';
+import  AnimeApi from '@/api/anime.js';
+import imageTest from '@/assets/images/106551l.webp';
 
 
 export default {
@@ -38,10 +40,18 @@ export default {
       maxStreak: 0,
       streak: 0,
       life: 3,
-      animeName: 'test',
+      animeImage: imageTest,
+      animeId: null,
       win: false,
       finish: false,
     };
+  },
+
+  async mounted() {
+    /* const res = await AnimeApi.getOneAnime();
+    console.log(res);
+    this.animeImage = res.data.anime.main_picture.medium;
+    this.animeId = res.data.anime.id; */
   },
 };
 </script>

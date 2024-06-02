@@ -8,6 +8,12 @@
 import testImage from '../../assets/images/106551l.webp';
 
 export default {
+  props: {
+    img: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       testImage: testImage,

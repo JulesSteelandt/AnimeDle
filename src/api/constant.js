@@ -1,4 +1,13 @@
-export const API: string = 'http://localhost:5500';
+import axios from 'axios';
+import info from './token.js';
+
 // 43608
-export const ANIME: string = `${API}/anime`;
-export const MANGA: string = `${API}/manga`;
+
+export const api  = axios.create({
+    baseURL: info.url,
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${info.token}`,
+
+    },
+}); 
