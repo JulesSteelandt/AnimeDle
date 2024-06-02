@@ -38,12 +38,12 @@ export default {
   components: {ButtonGame, ScoreMode, ImageClassic, LiveCount, WinText, InputAnime, ButtonGamemode},
   data() {
     return {
-      maxStreak: 0,
+      maxStreak: parseInt(localStorage.getItem('maxStreak')) || 0,
       streak: 0,
       life: 3,
       try_remaining: 3,
-      animeImage: null,
-      animeName: null,
+      animeImage: '',
+      animeName: '',
       animeId: null,
       win: false,
       finish: false,
@@ -74,6 +74,7 @@ export default {
         this.streak += 1;
         this.try_remaining = 0;
         this.maxStreak = Math.max(this.streak, this.maxStreak);
+        localStorage.setItem('maxStreak', this.maxStreak);
       } else {
         this.try_remaining -= 1;
         if (this.try_remaining === 0) {

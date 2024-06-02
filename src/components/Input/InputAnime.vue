@@ -17,6 +17,14 @@
         placeholder="Nom de l'anime"
         @input="updateSearchResults"
     />
+
+    <template v-slot:item="{ item }"> <span v-if="item.alternative_titles.en === ''">
+    {{ item.title }} (titre original)
+  </span>
+      <span v-else>
+    {{ item.alternative_titles.en }}
+  </span>
+    </template>
     <ButtonGame text="valider" @click="validateInput" />
   </v-row>
 </template>
@@ -24,9 +32,9 @@
 <script>
 import ButtonGame from '../Button/ButtonGame.vue';
 import AnimeApi from '@/api/anime.js';
-import {th} from 'vuetify/locale';
 
 export default {
+
   components: {
     ButtonGame,
   },
@@ -37,6 +45,7 @@ export default {
       animeValue: '',
     };
   },
+
   methods: {
     async debouncedSearch() {
         try {
