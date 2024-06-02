@@ -1,13 +1,11 @@
 <template>
-  <div class="h-[93vh] bg-main">
-    <section class="flex h-full">
-      <div class="h-2/4 w-2/4">
-        <img :src="imgAccueil" alt="image de pleins d'anime" class="rounded-r-[1300px] bg-mainText" />
-      </div>
-      <div class="flex h-3/4 w-full items-center justify-center">
-        <h1 class="font-Itim text-9xl text-mainText drop-shadow-2xl">
+  <div class="h-[93vh] bg-main flex flex-col justify-center items-center">
+    <section class="flex flex-col lg:flex-row h-full w-full items-center">
+      <img :src="isSmallScreen ? imgAccueil_res : imgAccueil" alt="image de pleins d'anime" :class="[isSmallScreen ? 'w-[100vw]' : 'w-[40vw]', 'max-w-[600px]']"/>
+      <div class="items-center justify-center p-10">
+        <h1  class="font-Itim text-mainText drop-shadow-2xl text-[8vw] " >
           Bienvenue sur
-          <p class="font-Lemon font-bold underline">
+          <p class="font-Lemon font-bold underline text-[10vw]">
             AnimeDle
           </p>
         </h1>
@@ -18,14 +16,30 @@
 
 <script>
 import imgAccueil from '@/assets/images/accueil.png';
+import imgAccueil_res from '@/assets/images/accueil_res.png';
 
 export default {
   data() {
     return {
       imgAccueil,
+      imgAccueil_res,
+      isSmallScreen: window.innerWidth < 1024,
     };
   },
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.isSmallScreen = window.innerWidth < 1024;
+    },
+  },
 };
-
-
 </script>
+
+<style scoped>
+/* Vous pouvez ajouter des styles supplémentaires ici si nécessaire */
+</style>

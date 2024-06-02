@@ -1,9 +1,13 @@
 <template>
   <div>
-    <header>
-      <Navbar />
-    </header>
-    <RouterView />
+    <v-app>
+      <header>
+        <Navbar />
+      </header>
+      <v-main>
+          <RouterView />
+      </v-main>
+    </v-app>
   </div>
 </template>
 

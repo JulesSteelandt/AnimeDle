@@ -1,15 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+import {COLORS} from './src/constants/colors';
+
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,vue}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx,vue}',
+  ],
+
   theme: {
     extend: {
       colors: {
-        main: '#444961',
-        secondary: '#2D3142',
-        mainText: '#EAE8FF',
-        secondaryText: '#D4D0FF',
-        button: '#D4D0FF',
-        button_sh: '#B3ACFF',
+        main: COLORS.MAIN,
+        secondary: COLORS.SECONDARY,
+        mainText: COLORS.MAIN_TEXT,
+        secondaryText: COLORS.SECONDARY_TEXT,
+        button: COLORS.BUTTON,
+        button_sh: COLORS.BUTTON_SH,
       },
       fontFamily: {
         Lemon: ['Lemon', 'Regular'],

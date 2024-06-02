@@ -1,25 +1,23 @@
-import './assets/main.css';
-
 import {createApp} from 'vue';
 import App from './App.vue';
 import router from './router/index.js';
+import './assets/main.css';
 import 'vuetify/styles';
 import {createVuetify} from 'vuetify';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
 import '@mdi/font/css/materialdesignicons.css';
 
 const app = createApp(App);
 
+// Utilisation du routeur
 app.use(router);
 
 
+
+
+// Configuration de Vuetify
 const vuetify = createVuetify({
   theme: false,
-  components,
-  directives,
 });
 
+// Utilisation de Vuetify
 app.use(vuetify).mount('#app');
-
- 

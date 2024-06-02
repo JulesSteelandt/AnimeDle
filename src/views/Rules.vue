@@ -1,6 +1,6 @@
 <template>
-  <div class='flex h-[93vh] items-center justify-center bg-main text-white '>
-    <div class='max-w-2xl rounded-lg bg-secondary p-8 shadow-md ma-5'>
+  <div class='flex h-[93vh] items-center justify-center bg-main text-white my-3'>
+    <div class='max-w-2xl rounded-lg bg-secondary p-8 shadow-md ma-5 max-h-full overflow-auto'>
       <h2 class='mb-4 font-Lemon text-3xl'>Comment jouer :</h2>
 
       <v-col class='mb-8'>
