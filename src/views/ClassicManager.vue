@@ -13,10 +13,10 @@
         <WinText :win="win" />
         <p>Réponse :</p>
         <p class="pb-3">{{ animeName }}</p>
-        <ButtonGamemode :text="win ? 'suivant' : 'recommencez'" />
+        <ButtonGame :text="win ? 'suivant' : 'recommencez'" @click="continueGame"/>
       </div>
       <div v-else>
-        <InputAnime />
+        <InputAnime @update:idAnime="checkId"/>
       </div>
     </div>
   </div>
@@ -31,17 +31,19 @@ import ScoreMode from '@/components/Score/ScoreMode.vue';
 import ButtonGamemode from '@/components/Button/ButtonGamemode.vue';
 import  AnimeApi from '@/api/anime.js';
 import imageTest from '@/assets/images/106551l.webp';
+import ButtonGame from '@/components/Button/ButtonGame.vue';
 
 
 export default {
-  components: {ScoreMode, ImageClassic, LiveCount, WinText, InputAnime, ButtonGamemode},
+  components: {ButtonGame, ScoreMode, ImageClassic, LiveCount, WinText, InputAnime, ButtonGamemode},
   data() {
     return {
       maxStreak: 0,
       streak: 0,
       life: 3,
       try_remaining: 3,
-      animeImage: imageTest,
+      animeImage: null,
+      animeName: null,
       animeId: null,
       win: false,
       finish: false,
@@ -49,12 +51,55 @@ export default {
   },
 
   async mounted() {
-    /* const res = await AnimeApi.getOneAnime();
+    const res = await AnimeApi.getOneAnime();
     console.log(res);
-    this.animeImage = res.data.anime.main_picture.medium;
-    this.animeId = res.data.anime.id; */
-    const res = await AnimeApi.getAnimeBySearch('love');
-    console.log(res);
+    this.animeImage = res.data.anime.main_picture.large;
+    this.animeName = res.data.anime.title;
+    this.animeId = res.data.anime.id;
+  },
+
+  methods: {
+
+    async newAnime(){
+      const res = await AnimeApi.getOneAnime();
+      this.animeImage = res.data.anime.main_picture.large;
+      this.animeName = res.data.anime.title;
+      this.animeId = res.data.anime.id;
+    },
+
+    checkId(id) {
+      if (id === this.animeId) {
+        this.finish = true;
+        this.win = true;
+        this.streak += 1;
+        this.try_remaining = 0;
+        this.maxStreak = Math.max(this.streak, this.maxStreak);
+      } else {
+        this.try_remaining -= 1;
+        if (this.try_remaining === 0) {
+          this.finish = true;
+          this.life -= 1;
+        }
+      }
+    },
+
+  continueGame() {
+    if (this.win) {
+      this.win = false;
+    } else
+      if (this.life === 0) {
+        this.streak = 0;
+        this.life = 3;
+      }
+      this.finish = false;
+      this.try_remaining = 3;
+      
+    
+    this.newAnime();
+  },
+
   },
 };
+
+
 </script>

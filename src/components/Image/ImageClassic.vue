@@ -1,7 +1,7 @@
 <template>
     <img :src="img"
          alt="guess_image"
-         class="h-96 w-96"
+         width="350"
          :style="{ filter: `blur(${blur})` }"
     />
 </template>
