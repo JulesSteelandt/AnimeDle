@@ -1,39 +1,11 @@
 # AnimeDle
 
-This template should help get you started developing with Vue 3 in Vite.
+## Welcome
 
-## Recommended IDE Setup
+Welcome to AnimeDle, an exciting project where users can put their anime knowledge to the test!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## About
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+The concept of AnimeDle is simple yet engaging – guess the anime from blurred images! Users will be presented with
+images of different anime scenes that are intentionally blurred. The challenge is to correctly identify the anime based
+on these obscured visuals.

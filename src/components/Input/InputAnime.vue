@@ -1,30 +1,30 @@
 <template>
   <v-row class="space-x-5 my-2 justify-center">
-    <input
-        class="font-Itim text-inputText h-6 mt-2 text-3xl text-white w-[30vw]"
+
+    <div class="anime-search">
+      <input
+        class="rounded-[20px] w-[45vh] font-Itim text-inputText h-8 shadow-inner shadow-shadowInner px-2 bg-white mt-2"
         v-model="animeValue"
+        type="text"
         placeholder="Nom de l'anime"
         @keyup="updateSearchResults"
-    />
-    <v-autocomplete
-        class="font-Itim text-inputText h-6 mt-2 text-3xl text-white w-[30vw]"
-        v-model="inputValue"
-        bg-color="white"
-        rounded
-        :items="searchResults"
-        item-value="node.id"
-        item-title="node.title"
-        placeholder="Nom de l'anime"
-        @input="updateSearchResults"
-    />
+      />
+      <ul class="search-results" v-if="searchResults.length > 0">
+        <li
+          v-for="anime in searchResults"
+          :key="anime.node.id"
+          class="search-result"
+          @click="selectAnime(anime.node)"
+        >
+         <span v-if="anime.node.alternative_titles && anime.node.alternative_titles.en !==''">
+            {{ anime.node.alternative_titles.en }}
+          </span>
+          <span>{{ anime.title }} </span>
+        </li>
+      </ul>
+    </div>
 
-    <template v-slot:item="{ item }"> <span v-if="item.alternative_titles.en === ''">
-    {{ item.title }} (titre original)
-  </span>
-      <span v-else>
-    {{ item.alternative_titles.en }}
-  </span>
-    </template>
+
     <ButtonGame text="valider" @click="validateInput" />
   </v-row>
 </template>
@@ -48,19 +48,27 @@ export default {
 
   methods: {
     async debouncedSearch() {
-        try {
-          if (!this.animeValue) return;
-          if (this.animeValue.length < 3) return;
-          const res = await AnimeApi.getAnimeBySearch(this.animeValue);
-          this.searchResults = res.data.anime;
-        } catch (error) {
-          console.error('Erreur lors de la recherche d\'anime:', error);
-          this.searchResults = [];
-        }
+      try {
+        if (!this.animeValue) return;
+        if (this.animeValue.length < 3) return;
+        const res = await AnimeApi.getAnimeBySearch(this.animeValue);
+        this.searchResults = res.data.anime;
+      } catch (error) {
+        console.error('Erreur lors de la recherche d\'anime:', error);
+        this.searchResults = [];
+      }
     },
 
-    updateSearchResults() {
-      this.debouncedSearch();
+    async updateSearchResults() {
+      await this.debouncedSearch();
+      console.log(this.searchResults);
+    },
+
+    selectAnime(anime) {
+      console.log(anime);
+      this.inputValue = anime.id;
+      this.animeValue = anime.title;
+      this.searchResults = [];
     },
 
     validateInput() {
@@ -69,3 +77,33 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.anime-search {
+  position: relative; /* Necessary for positioning the results list */
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute; /* Position the results list below the input */
+  top: 100%; /* Adjust based on your styling preferences */
+  left: 0;
+  background-color: white; /* Customize background color */
+  border: 1px solid #ddd; /* Optional border */
+  width: 100%; /* Match the input width */
+  max-height: 200px; /* Limit the height of the results list */
+  overflow-y: auto; /* Enable scrolling if results exceed the height */
+}
+
+.search-result {
+  padding: 5px 10px;
+  cursor: pointer;
+  /* Additional styling for results items */
+}
+
+.search-result:hover {
+  background-color: #eee; /* Optional hover effect */
+}
+</style>
