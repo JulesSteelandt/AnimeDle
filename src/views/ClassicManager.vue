@@ -13,10 +13,10 @@
         <WinText :win="win" />
         <p>Réponse :</p>
         <p class="pb-3">{{ animeName }}</p>
-        <ButtonGame :text="win ? 'suivant' : 'recommencez'" @click="continueGame"/>
+        <ButtonGame :text="win ? 'suivant' : 'recommencez'" @click="continueGame" />
       </div>
       <div v-else>
-        <InputAnime @update:idAnime="checkId"/>
+        <InputAnime @update:idAnime="checkId" />
       </div>
     </div>
   </div>
@@ -29,8 +29,7 @@ import LiveCount from '@/components/Score/LiveCount.vue';
 import ImageClassic from '@/components/Image/ImageClassic.vue';
 import ScoreMode from '@/components/Score/ScoreMode.vue';
 import ButtonGamemode from '@/components/Button/ButtonGamemode.vue';
-import  AnimeApi from '@/api/anime.js';
-import imageTest from '@/assets/images/106551l.webp';
+import AnimeApi from '@/api/anime.js';
 import ButtonGame from '@/components/Button/ButtonGame.vue';
 
 
@@ -52,7 +51,6 @@ export default {
 
   async mounted() {
     const res = await AnimeApi.getOneAnime();
-    console.log(res);
     this.animeImage = res.data.anime.main_picture.large;
     this.animeName = res.data.anime.title;
     this.animeId = res.data.anime.id;
@@ -60,7 +58,7 @@ export default {
 
   methods: {
 
-    async newAnime(){
+    async newAnime() {
       const res = await AnimeApi.getOneAnime();
       this.animeImage = res.data.anime.main_picture.large;
       this.animeName = res.data.anime.title;
@@ -84,20 +82,19 @@ export default {
       }
     },
 
-  continueGame() {
-    if (this.win) {
-      this.win = false;
-    } else
-      if (this.life === 0) {
+    continueGame() {
+      if (this.win) {
+        this.win = false;
+      } else if (this.life === 0) {
         this.streak = 0;
         this.life = 3;
       }
       this.finish = false;
       this.try_remaining = 3;
-      
-    
-    this.newAnime();
-  },
+
+
+      this.newAnime();
+    },
 
   },
 };

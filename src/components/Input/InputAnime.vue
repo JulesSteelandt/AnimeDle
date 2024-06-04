@@ -23,11 +23,13 @@
         </li>
       </ul>
     </div>
+    <span v-if="error" class="text-red-500">Veuillez sélectionner un anime dans la liste</span>
 
 
     <ButtonGame text="valider" @click="validateInput" />
   </v-row>
 </template>
+
 
 <script>
 import ButtonGame from '../Button/ButtonGame.vue';
@@ -40,9 +42,10 @@ export default {
   },
   data() {
     return {
-      inputValue: '',
-      searchResults: [],
       animeValue: '',
+      searchResults: [],
+      inputValue: '',
+      error: false,
     };
   },
 
@@ -61,19 +64,38 @@ export default {
 
     async updateSearchResults() {
       await this.debouncedSearch();
-      console.log(this.searchResults);
     },
 
     selectAnime(anime) {
-      console.log(anime);
       this.inputValue = anime.id;
       this.animeValue = anime.title;
       this.searchResults = [];
     },
 
     validateInput() {
+      if (!this.inputValue) {
+        this.error = true;
+        return;
+      }
       this.$emit('update:idAnime', this.inputValue);
     },
+
+    // New method to handle outside clicks
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.searchResults = []; // Clear search results
+      }
+    },
+  },
+
+  mounted() {
+    // Add event listener for document clicks
+    document.addEventListener('click', this.handleClickOutside);
+  },
+
+  beforeUnmount() {
+    // Remove event listener on component unmount
+    document.removeEventListener('click', this.handleClickOutside);
   },
 };
 </script>

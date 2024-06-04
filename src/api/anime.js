@@ -2,17 +2,16 @@ import {api} from './constant';
 
 export default {
 
-    getOneAnime: () => {
-        return api.get('/anime');
-    },
+  getOneAnime: () => {
+    return api.get('/anime');
+  },
 
-    getAnimeById: (id) => {
-        return api.get(`/anime/${id});`);
-    },
+  getAnimeById: (id) => {
+    return api.get(`/anime/${id});`);
+  },
 
-    getAnimeBySearch: (search) => {
-        console.log('search: ', search);
-        return api.get(`/anime/search?q=${search}`);
-    },
+  getAnimeBySearch: (search) => {
+    return api.get(`/anime/search?q=${search}`);
+  },
 
 };
