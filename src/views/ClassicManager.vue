@@ -17,6 +17,9 @@
       </div>
       <div v-else>
         <InputAnime @update:idAnime="checkId" />
+        <div v-for="(guess,index) in name_try" :key="index" class="flex justify-center">
+          <BadAnswer :close="guess.close" :animeName="guess.name" class="my-2" />
+        </div>
       </div>
     </div>
   </div>
@@ -31,15 +34,17 @@ import ScoreMode from '@/components/Score/ScoreMode.vue';
 import ButtonGamemode from '@/components/Button/ButtonGamemode.vue';
 import AnimeApi from '@/api/anime.js';
 import ButtonGame from '@/components/Button/ButtonGame.vue';
+import BadAnswer from '@/components/Score/BadAnswer.vue';
 
 
 export default {
-  components: {ButtonGame, ScoreMode, ImageClassic, LiveCount, WinText, InputAnime, ButtonGamemode},
+  components: {ButtonGame, ScoreMode, ImageClassic, LiveCount, WinText, InputAnime, ButtonGamemode, BadAnswer},
   data() {
     return {
       maxStreak: parseInt(localStorage.getItem('maxStreak')) || 0,
       streak: 0,
       life: 3,
+      name_try: [],
       try_remaining: 3,
       animeImage: '',
       animeName: '',
@@ -65,8 +70,10 @@ export default {
       this.animeId = res.data.anime.id;
     },
 
-    checkId(id) {
+    checkId(id, value) {
+      console.log(AnimeApi.getAnimeById(id), AnimeApi.getAnimeById(this.animeId));
       if (id === this.animeId) {
+        this.name_try = [];
         this.finish = true;
         this.win = true;
         this.streak += 1;
@@ -74,6 +81,7 @@ export default {
         this.maxStreak = Math.max(this.streak, this.maxStreak);
         localStorage.setItem('maxStreak', this.maxStreak);
       } else {
+        this.name_try.push({name: value, close: true});
         this.try_remaining -= 1;
         if (this.try_remaining === 0) {
           this.finish = true;

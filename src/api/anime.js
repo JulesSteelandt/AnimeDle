@@ -7,7 +7,7 @@ export default {
   },
 
   getAnimeById: (id) => {
-    return api.get(`/anime/${id});`);
+    return api.get(`/anime/${id}`);
   },
 
   getAnimeBySearch: (search) => {

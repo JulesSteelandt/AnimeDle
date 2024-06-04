@@ -77,7 +77,7 @@ export default {
         this.error = true;
         return;
       }
-      this.$emit('update:idAnime', this.inputValue);
+      this.$emit('update:idAnime', this.inputValue, this.animeValue);
     },
 
     // New method to handle outside clicks
